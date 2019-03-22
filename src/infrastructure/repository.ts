@@ -1,4 +1,4 @@
-export interface Repository<T> {
+export interface RepositoryCustom<T> {
     get(criteria: any): Promise<T[]>;
     getById(id: string): Promise<T>;
     create(obj: T): Promise<T>;

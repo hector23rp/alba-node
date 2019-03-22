@@ -1,0 +1,19 @@
+{
+    "name": "Artist",
+    "table": {
+        "name": "Artist"
+    },
+    "columns": {
+        "id": {
+            "type": "ObjectId",
+            "primary": true,
+            "generated": true
+        },
+        "name": {
+            "type": "string"
+        },
+        "surname": {
+            "type": "string"
+        }
+    }
+}

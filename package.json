@@ -12,7 +12,8 @@
     "test": "mocha --recursive --require ts-node/register \"src/**/*.spec.ts\" \"integration-tests/**/*.spec.ts\"",
     "cover": "nyc npm test",
     "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
-    "start": "ts-node src/index.ts"
+    "start": "ts-node src/index.ts",
+    "dev": "./node_modules/nodemon/bin/nodemon.js"
   },
   "keywords": [
     "alba",
@@ -80,6 +81,9 @@
   "dependencies": {
     "express": "^4.16.4",
     "inversify": "^4.13.0",
-    "reflect-metadata": "^0.1.13"
+    "mongodb": "^3.1.13",
+    "nodemon": "^1.18.10",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.2.15"
   }
 }

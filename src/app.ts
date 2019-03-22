@@ -15,7 +15,7 @@ import { DiagnosisResponse } from "./cal/diagnosis-response";
 export class App {
     server: express.Application;
 
-    start(options: any) {
+    async start(options: any) {
         const app = express();
         app.use(bodyParser.urlencoded({
             extended: true,
@@ -54,9 +54,9 @@ export class App {
         });
 
         const routePrefix = '/api';
-        const c1 = new ResourceController<string, Artist>(routePrefix, 'artist', 'artists', router, iocContainer);
-        const c2 = new ResourceController<string, Album>(routePrefix, 'album', 'albums', router, iocContainer);
-        const c3 = new ResourceController<string, Song>(routePrefix, 'song', 'songs', router, iocContainer);
+        const c1 = new ResourceController<string, Artist>(routePrefix, 'artist', 'artists', router, iocContainer, 'Artist');
+        const c2 = new ResourceController<string, Album>(routePrefix, 'album', 'albums', router, iocContainer, 'Album');
+        const c3 = new ResourceController<string, Song>(routePrefix, 'song', 'songs', router, iocContainer, 'Song');
         app.use(routePrefix, router);
 
         const port = +process.env.PORT || 5000;

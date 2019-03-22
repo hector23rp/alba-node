@@ -3,21 +3,23 @@ import { Container } from "inversify";
 import { Logger } from "./logger";
 import { TYPES } from "../types";
 import { InMemoryRepository } from "./in-memory-repository";
-import { Repository } from "./repository";
+import { RepositoryCustom } from "./repository";
+import { Repository } from 'typeorm';
 
 export class ResourceController<PK, T> {
     private logger;
-    private repository: Repository<T>;
+    private repository: RepositoryCustom<T>;
 
     constructor(
         public prefix: string,
         public resource: string,
         public pluralName: string,
         private router: Router,
-        private iocContainer: Container
+        private iocContainer: Container,
+        private type: string
     ) {
         this.logger = this.iocContainer.get<Logger>(TYPES.Logger);
-        this.repository = new InMemoryRepository<T>(<keyof T>'id');
+        this.repository = new InMemoryRepository<T>(<keyof T>'id', this.type);
         this.setupController();
     }
 
